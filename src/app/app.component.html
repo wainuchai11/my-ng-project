@@ -55,25 +55,25 @@
       <app-action-bar [(counter)]="appCounter" [step]="5"></app-action-bar>
       <app-sqaure-flex [divWidth]="appCounter"></app-sqaure-flex>
     </div>
+
+    <div style="padding: 10px; border: 1px solid black">
+      <app-action-bar [inputDisplay]="false"></app-action-bar>
+    </div>
+
+    <div style="padding: 10px; border: 1px solid black">
+      <ul>
+        <li *ngFor="let customer of cutomerList; let idx = index">
+          {{ customer }}
+          <button (click)="removeCustomer(idx)">Remove</button>
+        </li>
+      </ul>
+      <div style="display: flex; gap: 5px">
+        <button (click)="pushCustomer()">Push customer</button>
+        <button (click)="unShiftCustomer()">Unshift customer</button>
+      </div>
+    </div>
   </div>
   <ng-template #elseTemplate>
     <div>Please activate the app to see the content</div>
   </ng-template>
-</div>
-
-<div style="padding: 10px; border: 1px solid black">
-  <app-action-bar [inputDisplay]="false"></app-action-bar>
-</div>
-
-<div style="padding: 10px; border: 1px solid black">
-  <ul>
-    <li *ngFor="let customer of cutomerList; let idx = index">
-      {{ customer }}
-      <button (click)="removeCustomer(idx)">Remove</button>
-    </li>
-  </ul>
-  <div style="display: flex; gap: 5px">
-    <button (click)="pushCustomer()">Push customer</button>
-    <button (click)="unShiftCustomer()">Unshift customer</button>
-  </div>
 </div>
