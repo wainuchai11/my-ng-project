@@ -67,7 +67,10 @@
 
 <div style="padding: 10px; border: 1px solid black">
   <ul>
-    <li *ngFor="let customer of cutomerList">{{ customer }}</li>
+    <li *ngFor="let customer of cutomerList; let idx = index">
+      {{ customer }}
+      <button (click)="removeCustomer(idx)">Remove</button>
+    </li>
   </ul>
   <div style="display: flex; gap: 5px">
     <button (click)="pushCustomer()">Push customer</button>

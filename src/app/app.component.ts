@@ -55,6 +55,10 @@ export class AppComponent {
     this.cutomerList.unshift('Customer' + (this.cutomerList.length + 1));
   }
 
+  removeCustomer(index: number) {
+    this.cutomerList.splice(index, 1);
+  }
+
   // doWidthChanged(value: number) {
   //   this.sqaureWidth = value;
   // }
