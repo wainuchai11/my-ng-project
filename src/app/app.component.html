@@ -69,4 +69,8 @@
   <ul>
     <li *ngFor="let customer of cutomerList">{{ customer }}</li>
   </ul>
+  <div style="display: flex; gap: 5px">
+    <button (click)="pushCustomer()">Push customer</button>
+    <button (click)="unShiftCustomer()">Unshift customer</button>
+  </div>
 </div>

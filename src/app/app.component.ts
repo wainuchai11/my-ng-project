@@ -14,9 +14,15 @@ export class AppComponent {
   sqaureWidth = 250;
   activateValue = false;
   activateLabel = 'Activate';
-  activateTextColor = 'green'
+  activateTextColor = 'green';
 
-  cutomerList : string[] = ['Customer1', 'Customer2', 'Customer3', 'Customer4', 'Customer5'];
+  cutomerList: string[] = [
+    'Customer1',
+    'Customer2',
+    'Customer3',
+    'Customer4',
+    'Customer5',
+  ];
 
   testNumberChanged(value: number) {
     console.log('Number changed', value);
@@ -32,14 +38,23 @@ export class AppComponent {
 
   handleActivate() {
     this.activateValue = !this.activateValue;
-    if(this.activateValue) {
+    if (this.activateValue) {
       this.activateLabel = 'Deactivate';
       this.activateTextColor = 'red';
-    }else {
+    } else {
       this.activateLabel = 'Activate';
       this.activateTextColor = 'green';
     }
   }
+
+  pushCustomer() {
+    this.cutomerList.push('Customer' + (this.cutomerList.length + 1));
+  }
+
+  unShiftCustomer() {
+    this.cutomerList.unshift('Customer' + (this.cutomerList.length + 1));
+  }
+
   // doWidthChanged(value: number) {
   //   this.sqaureWidth = value;
   // }
