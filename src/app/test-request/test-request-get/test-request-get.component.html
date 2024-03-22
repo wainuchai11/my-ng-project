@@ -1,3 +1,15 @@
-<div >
-  <div *ngFor="let book of bookList">{{ book.isbn }} : {{ book.name }}</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+  <div style="display: flex; gap: 5px">
+    <label for="searchInput">Search Name :</label>
+    <input #myNameInputText type="text" />
+    <button (click)="handleSearch(myNameInputText.value)">Search</button>
+  </div>
+  <div
+    style="padding: 10px; border: 1px solid gray; border-radius: 5px"
+    *ngIf="bookList.length > 0"
+  >
+    <ul>
+      <li *ngFor="let book of bookList">{{ book.isbn }} : {{ book.name }}</li>
+    </ul>
+  </div>
 </div>

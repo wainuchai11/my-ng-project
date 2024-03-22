@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Book } from './test-request-get';
 
 @Component({
@@ -9,18 +9,17 @@ import { Book } from './test-request-get';
 })
 export class TestRequestGetComponent implements OnInit {
   bookList: Book[] = [];
+  url = 'https://anapioficeandfire.com/api/books';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-    this.http
-      .get<Book[]>('https://www.anapioficeandfire.com/api/books/')
-      .subscribe((respones) => {
-        console.log(
-          '🚀 ~ file: test-request-get.component.ts:17 ~ TestRequestGetComponent ~ .subscribe ~ respones:',
-          respones
-        );
-        this.bookList = respones;
-      });
+  ngOnInit(): void {}
+
+  handleSearch(name: string) {
+    this.http.get<Book[]>(this.url + '?name=' + name).subscribe((respones) => {
+      this.bookList = respones;
+      this.cdr.detectChanges();
+    });
+    console.log('searching for book with name: ', name);
   }
 }
