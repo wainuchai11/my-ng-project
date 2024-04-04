@@ -8,6 +8,8 @@ import { MaxMinMeterComponent } from './max-min-meter/max-min-meter.component';
 import { SqaureFlexComponent } from './sqaure-flex/sqaure-flex.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TestRequestModule } from './test-request/test-request.module';
+import { TableComponentComponent } from './table-component/table-component.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { TestRequestModule } from './test-request/test-request.module';
     ActionBarComponent,
     MaxMinMeterComponent,
     SqaureFlexComponent,
+    TableComponentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     TestRequestModule,
+    TableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

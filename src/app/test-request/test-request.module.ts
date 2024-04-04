@@ -9,7 +9,8 @@ import { TestRequestGetComponent } from './test-request-get/test-request-get.com
     TestRequestGetComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    
   ],
   exports: [
     TestRequestGetComponent

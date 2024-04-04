@@ -15,6 +15,7 @@ export class AppComponent {
   activateValue = false;
   activateLabel = 'Activate';
   activateTextColor = 'green';
+  
 
   cutomerList: string[] = [
     'Customer1',
