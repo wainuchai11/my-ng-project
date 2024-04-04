@@ -4,12 +4,19 @@
     <input #myNameInputText type="text" pInputText />
     <button (click)="handleSearch(myNameInputText.value)">Search</button>
   </div>
+
   <div
     style="padding: 10px; border: 1px solid gray; border-radius: 5px"
-    *ngIf="bookList.length > 0"
+    *ngIf="bookList.length > 0; else noDataTemplate"
   >
     <ul>
       <li *ngFor="let book of bookList">{{ book.isbn }} : {{ book.name }}</li>
     </ul>
   </div>
+
+  <ng-template #noDataTemplate>
+    <div style="padding: 10px; border: 1px solid gray; border-radius: 5px">
+      No data found
+    </div>
+  </ng-template>
 </div>

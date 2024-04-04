@@ -10,16 +10,20 @@ import { Book } from './test-request-get';
 export class TestRequestGetComponent implements OnInit {
   bookList: Book[] = [];
   url = 'https://anapioficeandfire.com/api/books';
+  loading = false;
 
   constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {}
 
   handleSearch(name: string) {
+    this.loading = true;
     this.http.get<Book[]>(this.url + '?name=' + name).subscribe((respones) => {
       this.bookList = respones;
+      this.loading = false;
       this.cdr.detectChanges();
     });
+
     console.log('searching for book with name: ', name);
   }
 }

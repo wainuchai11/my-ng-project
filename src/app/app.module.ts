@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestRequestModule } from './test-request/test-request.module';
 import { TableComponentComponent } from './table-component/table-component.component';
 import { TableModule } from 'primeng/table';
+import { ShoppingModule } from './shopping/shopping.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TableModule } from 'primeng/table';
     HttpClientModule,
     TestRequestModule,
     TableModule,
+    ShoppingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

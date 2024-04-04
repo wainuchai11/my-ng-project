@@ -80,6 +80,15 @@
     <div style="padding: 10px; border: 1px solid black">
       <app-table-component></app-table-component>
     </div>
+
+    <div
+      style="padding: 10px; border: 1px solid black; display: flex; gap: 20px"
+    >
+      <app-shopping-cart></app-shopping-cart>
+      <app-shopping-cart [value]="10"></app-shopping-cart>
+      <app-shopping-cart [value]="20"></app-shopping-cart>
+      <app-shopping-cart [value]="100"></app-shopping-cart>
+    </div>
   </div>
   <ng-template #elseTemplate>
     <div>Please activate the app to see the content</div>
