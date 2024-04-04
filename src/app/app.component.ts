@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './shopping/model/product';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,6 @@ export class AppComponent {
   activateValue = false;
   activateLabel = 'Activate';
   activateTextColor = 'green';
-  
 
   cutomerList: string[] = [
     'Customer1',
@@ -24,6 +24,22 @@ export class AppComponent {
     'Customer4',
     'Customer5',
   ];
+
+  products: Product[] = [
+    { name: 'Banana', decription: 'Fruit', price: 10 },
+    { name: 'Apple', decription: 'Fruit', price: 20 },
+    { name: 'Orange', decription: 'Fruit', price: 30 },
+    { name: 'Mango', decription: 'Fruit', price: 40 },
+    { name: 'Pineapple', decription: 'Fruit', price: 50 },
+    { name: 'Grapes', decription: 'Fruit', price: 60 },
+    { name: 'Watermelon', decription: 'Fruit', price: 70 },
+    { name: 'Strawberry', decription: 'Fruit', price: 80 },
+    { name: 'Blueberry', decription: 'Fruit', price: 90 },
+    { name: 'Raspberry', decription: 'Fruit', price: 100 },
+    { name: 'Blackberry', decription: 'Fruit', price: 110 },
+  ];
+
+  filterProducts: Product[] = this.products;
 
   testNumberChanged(value: number) {
     console.log('Number changed', value);
@@ -58,6 +74,14 @@ export class AppComponent {
 
   removeCustomer(index: number) {
     this.cutomerList.splice(index, 1);
+  }
+
+  searchProduct(text: string) {
+    this.filterProducts = this.products.filter((product) => {
+      const productName = product.name.toLowerCase();
+      const searchText = text.toLowerCase();
+      return productName.indexOf(searchText) !== -1;
+    });
   }
 
   // doWidthChanged(value: number) {

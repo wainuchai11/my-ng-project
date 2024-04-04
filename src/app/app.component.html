@@ -89,7 +89,32 @@
       <app-shopping-cart [value]="20"></app-shopping-cart>
       <app-shopping-cart [value]="100"></app-shopping-cart>
     </div>
+
+    <div style="padding: 10px; border: 1px solid black">
+      <div style="margin-bottom: 10px">
+        <app-shopping-search
+          (onSearch)="searchProduct($event)"
+        ></app-shopping-search>
+      </div>
+      <div
+        *ngIf="filterProducts.length > 0; else noData"
+        style="display: flex; flex-wrap: wrap; gap: 10px"
+      >
+        <div *ngFor="let product of filterProducts">
+          <div
+            style="padding: 5px; border: 1px solid #4b5563; border-radius: 5px"
+          >
+            <div>Name : {{ product.name }}</div>
+            <div>Price : {{ product.price }} ฿</div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noData>
+        <p>No data found</p>
+      </ng-template>
+    </div>
   </div>
+
   <ng-template #elseTemplate>
     <div>Please activate the app to see the content</div>
   </ng-template>
