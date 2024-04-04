@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Product } from './shopping/model/product';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,11 @@ import { Product } from './shopping/model/product';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
+  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {
+    console.log('AppComponent constructor');
+    this.fetchProducts();
+  }
+
   title = 'my-ng-project';
   appMinLabel = 'MyAppMinLabel';
   appMaxLabel = 'MyAppMaxLabel';
@@ -25,19 +31,7 @@ export class AppComponent {
     'Customer5',
   ];
 
-  products: Product[] = [
-    { name: 'Banana', decription: 'Fruit', price: 10 },
-    { name: 'Apple', decription: 'Fruit', price: 20 },
-    { name: 'Orange', decription: 'Fruit', price: 30 },
-    { name: 'Mango', decription: 'Fruit', price: 40 },
-    { name: 'Pineapple', decription: 'Fruit', price: 50 },
-    { name: 'Grapes', decription: 'Fruit', price: 60 },
-    { name: 'Watermelon', decription: 'Fruit', price: 70 },
-    { name: 'Strawberry', decription: 'Fruit', price: 80 },
-    { name: 'Blueberry', decription: 'Fruit', price: 90 },
-    { name: 'Raspberry', decription: 'Fruit', price: 100 },
-    { name: 'Blackberry', decription: 'Fruit', price: 110 },
-  ];
+  products: Product[] = [];
 
   filterProducts: Product[] = this.products;
 
@@ -81,6 +75,13 @@ export class AppComponent {
       const productName = product.name.toLowerCase();
       const searchText = text.toLowerCase();
       return productName.indexOf(searchText) !== -1;
+    });
+  }
+
+  fetchProducts() {
+    this.http.get<Product[]>('/api/product').subscribe((response) => {
+      this.products = response;
+      this.filterProducts = this.products;
     });
   }
 
